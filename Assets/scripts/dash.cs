@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Hierarchy;
 using UnityEngine;
 
 public class dash : MonoBehaviour
@@ -6,6 +7,7 @@ public class dash : MonoBehaviour
     public bool candash;
     public float dashSpeed = 100f;
     public float dashcooldowntime = 18f;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,7 +38,17 @@ public class dash : MonoBehaviour
         candash = false;
 
         yield return new WaitForSeconds(dashcooldowntime);
-
+        
         candash = true;
+        //if (candash == false)
+        //{
+
+        //    dashcooldowntime = 18f;
+        //}
+        //else if (candash == true)
+        //{
+
+        //    candash = true;
+        //}
     }
 }
