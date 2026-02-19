@@ -5,6 +5,7 @@ using UnityEngine;
 public class dash : MonoBehaviour
 {
     public bool candash;
+    public bool dashing;
     public float dashSpeed = 100f;
     public float dashcooldowntime = 18f;
    
@@ -28,8 +29,18 @@ public class dash : MonoBehaviour
                     GetComponent<Rigidbody>().AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
 
                     StartCoroutine(dashcooldown());
+                    dashing = true;
                 }
             }
+        }
+        if (GetComponent<PlayerMovement>().isGrounded == false&&dashing == true)
+        {
+            GetComponent<PlayerMovement>().speed = 1f;
+        }
+        if (GetComponent<PlayerMovement>().isGrounded == true)
+        {
+            dashing = false;
+            GetComponent<PlayerMovement>().speed = 5f;
         }
     }
 

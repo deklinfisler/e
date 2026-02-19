@@ -28,6 +28,14 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
+        if (isGrounded == false)
+        {
+            speed = 3f;
+        }
+         if (isGrounded == true)
+        {
+            speed = 5f;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
