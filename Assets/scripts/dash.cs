@@ -21,7 +21,7 @@ public class dash : MonoBehaviour
     {
         if (GetComponent<PlayerMovement>().isGrounded == false)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 if (GetComponent<PlayerMovement>().isGrounded == false && candash == true)
                 {
@@ -40,7 +40,7 @@ public class dash : MonoBehaviour
         if (GetComponent<PlayerMovement>().isGrounded == true)
         {
             dashing = false;
-            GetComponent<PlayerMovement>().speed = 5f;
+            GetComponent<PlayerMovement>().speed = 17f;
         }
     }
 

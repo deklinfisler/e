@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 7f;
+    public bool clamping;
     public float jumpForce = 10f;
     private Rigidbody rb;
     public bool isGrounded;
@@ -19,9 +20,28 @@ public class PlayerMovement : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        movement = Camera.main.transform.right * moveHorizontal + Camera.main.transform.forward * moveVertical;
+        Vector3 movement = Camera.main.transform.right * moveHorizontal + Camera.main.transform.forward * moveVertical;
+        movement.y = 0;
         rb.AddForce(movement * speed);
+
+        if(GetComponent<dash>().dashing == true)
+        {
+            clamping = false;
+        }
+        else
+        {
+            clamping = true;
+        }
+
+        if (clamping)
+        {
+            rb.linearVelocity = new Vector3(
+            Mathf.Clamp(rb.linearVelocity.x, -speed, speed),
+            rb.linearVelocity.y,
+            Mathf.Clamp(rb.linearVelocity.z, -speed, speed)
+
+        );
+            }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -30,11 +50,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isGrounded == false)
         {
-            speed = 3f;
+            speed = 15f;
         }
          if (isGrounded == true)
         {
-            speed = 5f;
+            speed = 17f;
         }
     }
 

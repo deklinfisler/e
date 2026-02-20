@@ -4167,7 +4167,7 @@ MonoBehaviour:
   TargetOffset: {x: 0, y: 0, z: 0}
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 0, y: 0, z: 0}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
@@ -4999,7 +4999,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625610916}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 66e18441b1718734b84428a237135d2d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5097,7 +5097,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be114687c2c0804182c704c1566a35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 17
+  clamping: 0
   jumpForce: 10
   isGrounded: 0
 --- !u!54 &1625610925
