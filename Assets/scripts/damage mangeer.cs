@@ -34,6 +34,8 @@ public class damagemangeer : MonoBehaviour
     public int crushwindup = 4;
     public int nomercy = 10;
 
+    public GameObject hitbox;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +45,9 @@ public class damagemangeer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButtonDown(0)) {
+            GameObject hit = Instantiate(hitbox, transform.position + transform.forward * 2, transform.rotation);
+            hit.transform.SetParent(transform);
+        }
     }
 }
