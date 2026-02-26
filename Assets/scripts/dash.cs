@@ -8,7 +8,7 @@ public class dash : MonoBehaviour
     public bool dashing;
     public float dashSpeed = 100f;
     public float dashcooldowntime = 18f;
-   
+    public float hitwall = 3f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +42,14 @@ public class dash : MonoBehaviour
             dashing = false;
             GetComponent<PlayerMovement>().speed = 17f;
         }
+        if (dashing == true&&GetComponent<PlayerMovement>().isGrounded ==false)
+        {
+            StartCoroutine(movementWallCooldown());
+        }
+        if (dashing == true)
+        {
+         GetComponent<hitbox>().Canattack = false;
+        }
     }
 
     IEnumerator dashcooldown()
@@ -61,5 +69,12 @@ public class dash : MonoBehaviour
 
         //    candash = true;
         //}
+    }
+
+    IEnumerator movementWallCooldown()
+    {
+        GetComponent<PlayerMovement>().movmentenabled = false;
+        yield return new WaitForSeconds(hitwall);
+        GetComponent<PlayerMovement>().movmentenabled = true;
     }
 }

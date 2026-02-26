@@ -5256,6 +5256,7 @@ MonoBehaviour:
   clamping: 0
   jumpForce: 10
   isGrounded: 0
+  movmentenabled: 0
 --- !u!54 &1625610925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5299,6 +5300,7 @@ MonoBehaviour:
   dashing: 0
   dashSpeed: 93
   dashcooldowntime: 18
+  hitwall: 5
 --- !u!114 &1625610927
 MonoBehaviour:
   m_ObjectHideFlags: 0
