@@ -1,10 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public class damagemangeer : MonoBehaviour
 {
     public bool onelife;
     public bool downed;
-
+    public bool dead;
+    public bool reviveable;
+    public bool revived;
+    public bool invulnerable;
+    public bool lastlife;
+    public bool iframes;
+    public bool alive;
+    public bool notdowned;
 
     public int health = 190;
 
@@ -45,9 +53,56 @@ public class damagemangeer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)) {
+       
+        if ( dead == true )
+        {
+            GetComponent<PlayerMovement>().speed = 0;
+
+        }
+        if (lastlife == true && health == 0)
+        {
+            dead = true;
+        }
+        if (revived == true)
+        {
+            invulnerable = true;
+            StartCoroutine(InvulnerableTimer());
+        }
+        if (invulnerable == true)
+        {
+            iframes = true;
+            GetComponent<PlayerMovement>().speed = 22;
+        }
+        if (reviveable == true && Input.GetKeyDown(KeyCode.E)) 
+        {
+            revived = true;
+            reviveable = false;
+            lastlife = true;
+            downed = false;
+            health = 50;
+        }
+        if (downed == true)
+        {
+            reviveable = true;
+            GetComponent<PlayerMovement>().speed = 6;
+        }
+        if (health <= 0 && onelife == true) 
+        {
+            downed = true;
+           
+        }
+        if (downed == true)
+        {
+            lastlife = true;
+        }
+        if (Input.GetMouseButtonDown(0)) {
             GameObject hit = Instantiate(hitbox, transform.position + transform.forward * 2, transform.rotation);
             hit.transform.SetParent(transform);
         }
+    }
+    IEnumerator InvulnerableTimer()
+    {
+        yield return new WaitForSeconds(5);
+        invulnerable = false;
     }
 }
