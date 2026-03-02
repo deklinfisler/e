@@ -65,6 +65,7 @@ public class damagemangeer : MonoBehaviour
         }
         if (revived == true)
         {
+            downed = false;
             invulnerable = true;
             StartCoroutine(InvulnerableTimer());
         }
@@ -75,10 +76,8 @@ public class damagemangeer : MonoBehaviour
         }
         if (reviveable == true && Input.GetKeyDown(KeyCode.E)) 
         {
-            revived = true;
-            reviveable = false;
-            lastlife = true;
-            downed = false;
+            revived = false;
+            downed = true;
             health = 50;
         }
         if (downed == true)
@@ -94,6 +93,7 @@ public class damagemangeer : MonoBehaviour
         if (downed == true)
         {
             lastlife = true;
+            reviveable = true;
         }
         if (Input.GetMouseButtonDown(0)) {
             GameObject hit = Instantiate(hitbox, transform.position + transform.forward * 2, transform.rotation);
@@ -104,5 +104,6 @@ public class damagemangeer : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         invulnerable = false;
+
     }
 }
