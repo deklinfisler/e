@@ -14,6 +14,8 @@ public class damagemangeer : MonoBehaviour
     public bool alive;
     public bool notdowned;
 
+    public float damageresistance = 25;
+
     public int health = 190;
 
     public bool leaching;
@@ -59,42 +61,49 @@ public class damagemangeer : MonoBehaviour
             GetComponent<PlayerMovement>().speed = 0;
 
         }
+
         if (lastlife == true && health == 0)
         {
             dead = true;
         }
+
         if (revived == true)
         {
             downed = false;
             invulnerable = true;
             StartCoroutine(InvulnerableTimer());
         }
+
         if (invulnerable == true)
         {
             iframes = true;
             GetComponent<PlayerMovement>().speed = 22;
         }
+
         if (reviveable == true && Input.GetKeyDown(KeyCode.E)) 
         {
-            revived = false;
             downed = true;
-            health = 50;
+            health = 55;
         }
+
         if (downed == true)
         {
             reviveable = true;
             GetComponent<PlayerMovement>().speed = 6;
         }
+
         if (health <= 0 && onelife == true) 
         {
             downed = true;
            
         }
+
         if (downed == true)
         {
             lastlife = true;
             reviveable = true;
         }
+
         if (Input.GetMouseButtonDown(0)) {
             GameObject hit = Instantiate(hitbox, transform.position + transform.forward * 2, transform.rotation);
             hit.transform.SetParent(transform);
