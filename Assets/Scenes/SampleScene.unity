@@ -5360,7 +5360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be114687c2c0804182c704c1566a35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 17
+  acceleration: 50
+  topSpeed: 17
   clamping: 0
   jumpForce: 10
   isGrounded: 0
@@ -5431,6 +5432,8 @@ MonoBehaviour:
   iframes: 0
   alive: 0
   notdowned: 0
+  attacking: 0
+  damageresistance: 25
   health: 190
   leaching: 0
   healingtick: 5

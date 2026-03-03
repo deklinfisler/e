@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 7f;
+    public float acceleration = 17f;
+    public float topSpeed = 17f;
     public bool clamping;
     public float jumpForce = 10f;
     private Rigidbody rb;
@@ -14,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     {
         movmentenabled = true; 
         rb = GetComponent<Rigidbody>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -26,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 movement = Camera.main.transform.right * moveHorizontal + Camera.main.transform.forward * moveVertical;
             movement.y = 0;
-            rb.AddForce(movement * speed);
+            rb.AddForce(movement * acceleration);
 
             if (GetComponent<dash>().dashing == true)
             {
@@ -40,9 +44,9 @@ public class PlayerMovement : MonoBehaviour
             if (clamping)
             {
                 rb.linearVelocity = new Vector3(
-                Mathf.Clamp(rb.linearVelocity.x, -speed, speed),
+                Mathf.Clamp(rb.linearVelocity.x, -topSpeed, topSpeed),
                 rb.linearVelocity.y,
-                Mathf.Clamp(rb.linearVelocity.z, -speed, speed)
+                Mathf.Clamp(rb.linearVelocity.z, -topSpeed, topSpeed)
 
             );
             }
@@ -54,11 +58,11 @@ public class PlayerMovement : MonoBehaviour
             }
             if (isGrounded == false)
             {
-                speed = 15f;
+                topSpeed = 15f;
             }
             if (isGrounded == true)
             {
-                speed = 17f;
+                topSpeed = 17f;
             }
         }
     }

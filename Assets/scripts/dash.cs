@@ -35,12 +35,12 @@ public class dash : MonoBehaviour
         }
         if (GetComponent<PlayerMovement>().isGrounded == false&&dashing == true)
         {
-            GetComponent<PlayerMovement>().speed = 1f;
+            GetComponent<PlayerMovement>().topSpeed = 1f;
         }
         if (GetComponent<PlayerMovement>().isGrounded == true)
         {
             dashing = false;
-            GetComponent<PlayerMovement>().speed = 17f;
+            GetComponent<PlayerMovement>().topSpeed = 17f;
         }
         if (dashing == true&&GetComponent<PlayerMovement>().isGrounded ==false)
         {

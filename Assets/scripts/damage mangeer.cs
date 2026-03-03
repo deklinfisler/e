@@ -13,6 +13,7 @@ public class damagemangeer : MonoBehaviour
     public bool iframes;
     public bool alive;
     public bool notdowned;
+    public bool attacking;
 
     public float damageresistance = 25;
 
@@ -55,10 +56,10 @@ public class damagemangeer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if ( dead == true )
+
+        if (dead == true)
         {
-            GetComponent<PlayerMovement>().speed = 0;
+            GetComponent<PlayerMovement>().topSpeed = 0;
 
         }
 
@@ -77,10 +78,10 @@ public class damagemangeer : MonoBehaviour
         if (invulnerable == true)
         {
             iframes = true;
-            GetComponent<PlayerMovement>().speed = 22;
+            GetComponent<PlayerMovement>().topSpeed = 22;
         }
 
-        if (reviveable == true && Input.GetKeyDown(KeyCode.E)) 
+        if (reviveable == true && Input.GetKeyDown(KeyCode.E))
         {
             downed = true;
             health = 55;
@@ -89,13 +90,13 @@ public class damagemangeer : MonoBehaviour
         if (downed == true)
         {
             reviveable = true;
-            GetComponent<PlayerMovement>().speed = 6;
+            GetComponent<PlayerMovement>().topSpeed = 6;
         }
 
-        if (health <= 0 && onelife == true) 
+        if (health <= 0 && onelife == true)
         {
             downed = true;
-           
+
         }
 
         if (downed == true)
@@ -104,15 +105,57 @@ public class damagemangeer : MonoBehaviour
             reviveable = true;
         }
 
-        if (Input.GetMouseButtonDown(0)) {
-            GameObject hit = Instantiate(hitbox, transform.position + transform.forward * 2, transform.rotation);
-            hit.transform.SetParent(transform);
+
+        if (Input.GetMouseButtonDown(0) && attacking == false)
+        {
+            StartCoroutine(spawnhitboxes());
         }
+
     }
+
+
+    private void spawnhitbox(float scale)
+    {
+        Vector3 position = transform.position + Camera.main.transform.forward * 2;
+        position.y = transform.position.y;
+
+        Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
+        rotation.x = 0;
+        rotation.z = 0;
+
+        GameObject hit = Instantiate(hitbox, position, Quaternion.Euler(rotation));
+        hit.transform.SetParent(transform);
+        hit.transform.localScale = new Vector3(scale, scale, scale);
+        
+
+        StartCoroutine(pycomaincooldown());
+    }
+
+    IEnumerator spawnhitboxes()
+    {
+        spawnhitbox(1);
+        yield return new WaitForSeconds(0.05f);
+        spawnhitbox(1.1f);
+        yield return new WaitForSeconds(0.05f);
+        spawnhitbox(1.2f);
+        yield return new WaitForSeconds(0.05f);
+        spawnhitbox(1.2f);
+        yield return new WaitForSeconds(0.05f);
+        spawnhitbox(1.3f);
+    }
+
     IEnumerator InvulnerableTimer()
     {
         yield return new WaitForSeconds(5);
         invulnerable = false;
 
     }
+
+    IEnumerator pycomaincooldown()
+    {
+        attacking = true;
+        yield return new WaitForSeconds(pycomaincool);
+        attacking = false;
+    }
+
 }
