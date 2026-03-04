@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     public bool isGrounded;
     public bool movmentenabled;
+    public bool walking;
+    public bool running;
     void Start()
     {
         movmentenabled = true; 
@@ -56,13 +58,37 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 isGrounded = false;
             }
-            if (isGrounded == false)
+            if (Input.GetKey(KeyCode.LeftShift) == true)
             {
-                topSpeed = 15f;
+                running = true;
+                walking = false;
             }
-            if (isGrounded == true)
+            if (Input.GetKey(KeyCode.LeftShift) == false)
             {
-                topSpeed = 17f;
+                running = false;
+                walking = true;
+            }
+            if (running == true)
+            {
+                if (isGrounded == false)
+                {
+                    topSpeed = 15f;
+                }
+                if (isGrounded == true)
+                {
+                    topSpeed = 17f;
+                }
+            }
+            if (walking == true)
+            {
+                if (isGrounded == false)
+                {
+                    topSpeed = 8f;
+                }
+                if (isGrounded == true)
+                {
+                    topSpeed = 10f;
+                }
             }
         }
     }

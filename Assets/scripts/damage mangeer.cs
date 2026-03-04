@@ -133,15 +133,18 @@ public class damagemangeer : MonoBehaviour
 
     IEnumerator spawnhitboxes()
     {
-        spawnhitbox(1);
-        yield return new WaitForSeconds(0.05f);
-        spawnhitbox(1.1f);
-        yield return new WaitForSeconds(0.05f);
-        spawnhitbox(1.2f);
-        yield return new WaitForSeconds(0.05f);
-        spawnhitbox(1.2f);
-        yield return new WaitForSeconds(0.05f);
-        spawnhitbox(1.3f);
+        if
+        {
+            spawnhitbox(1);
+            yield return new WaitForSeconds(0.05f);
+            spawnhitbox(1.1f);
+            yield return new WaitForSeconds(0.05f);
+            spawnhitbox(1.2f);
+            yield return new WaitForSeconds(0.05f);
+            spawnhitbox(1.2f);
+            yield return new WaitForSeconds(0.05f);
+            spawnhitbox(1.3f);
+        }
     }
 
     IEnumerator InvulnerableTimer()
