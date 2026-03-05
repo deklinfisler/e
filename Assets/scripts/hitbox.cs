@@ -11,7 +11,7 @@ public class hitbox : MonoBehaviour
        
         
             Canattack = true;
-            Destroy(gameObject, 0.4f);
+            Destroy(gameObject, 0.04f);
         
     }
 
@@ -23,6 +23,7 @@ public class hitbox : MonoBehaviour
         if (other.TryGetComponent(out testdumby health))
         {
             health.test_dumby -= GetComponentInParent<damagemangeer>().pycomain;
+            GetComponentInParent<damagemangeer>().StopCoroutine(GetComponentInParent<damagemangeer>().hitboxCoroutine);
         }
         
     }

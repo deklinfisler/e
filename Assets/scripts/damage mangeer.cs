@@ -47,6 +47,8 @@ public class damagemangeer : MonoBehaviour
 
     public GameObject hitbox;
 
+    public Coroutine hitboxCoroutine;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -108,7 +110,7 @@ public class damagemangeer : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && attacking == false)
         {
-            StartCoroutine(spawnhitboxes());
+            hitboxCoroutine = StartCoroutine(spawnhitboxes());
         }
 
     }
@@ -133,18 +135,18 @@ public class damagemangeer : MonoBehaviour
 
     IEnumerator spawnhitboxes()
     {
-        if
-        {
+        
+        
             spawnhitbox(1);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.06f);
             spawnhitbox(1.1f);
-            yield return new WaitForSeconds(0.05f);
-            spawnhitbox(1.2f);
-            yield return new WaitForSeconds(0.05f);
-            spawnhitbox(1.2f);
-            yield return new WaitForSeconds(0.05f);
-            spawnhitbox(1.3f);
-        }
+            yield return new WaitForSeconds(0.06f);
+            spawnhitbox(1.1f);
+            yield return new WaitForSeconds(0.06f);
+            spawnhitbox(1.1f);
+            yield return new WaitForSeconds(0.06f);
+            spawnhitbox(1.1f);
+        
     }
 
     IEnumerator InvulnerableTimer()
