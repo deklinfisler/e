@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading;
 using Unity.Hierarchy;
 using UnityEngine;
 
@@ -48,7 +49,8 @@ public class dash : MonoBehaviour
         }
         if (dashing == true)
         {
-         GetComponent<hitbox>().Canattack = false;
+         GetComponent<damagemangeer>().attacking = false;
+            StartCoroutine(dashhitboxs());
         }
     }
 
@@ -59,16 +61,6 @@ public class dash : MonoBehaviour
         yield return new WaitForSeconds(dashcooldowntime);
         
         candash = true;
-        //if (candash == false)
-        //{
-
-        //    dashcooldowntime = 18f;
-        //}
-        //else if (candash == true)
-        //{
-
-        //    candash = true;
-        //}
     }
 
     IEnumerator movementWallCooldown()
@@ -76,5 +68,16 @@ public class dash : MonoBehaviour
         GetComponent<PlayerMovement>().movmentenabled = false;
         yield return new WaitForSeconds(hitwall);
         GetComponent<PlayerMovement>().movmentenabled = true;
+    }
+    IEnumerator dashhitboxs()
+    { 
+        Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
+        rotation.x = 0;
+        rotation.z = 0; 
+
+        GameObject dashhitbox = Instantiate(GetComponent<damagemangeer>().hitbox, transform.position, Quaternion.identity);
+        dashhitbox.transform.SetParent(transform);
+
+        yield return new WaitUntil(() => dashing = false);
     }
 }

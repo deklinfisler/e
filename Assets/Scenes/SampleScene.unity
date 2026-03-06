@@ -4975,7 +4975,7 @@ GameObject:
   - component: {fileID: 1552109921}
   - component: {fileID: 1552109920}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: nomercy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5366,6 +5366,9 @@ MonoBehaviour:
   jumpForce: 10
   isGrounded: 0
   movmentenabled: 0
+  walking: 0
+  running: 0
+  canjump: 1
 --- !u!54 &1625610925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5433,6 +5436,11 @@ MonoBehaviour:
   alive: 0
   notdowned: 0
   attacking: 0
+  afraid: 0
+  burning: 0
+  adrenaline: 0
+  greedy: 0
+  guilty: 0
   damageresistance: 25
   health: 190
   leaching: 0
@@ -5456,6 +5464,7 @@ MonoBehaviour:
   crushwindup: 4
   nomercy: 10
   hitbox: {fileID: 5578663931277354018, guid: c884c59e3931b8241a9eb1d976c6c222, type: 3}
+  dashhitbox: {fileID: 0}
 --- !u!1 &1632796174
 GameObject:
   m_ObjectHideFlags: 0
@@ -5468,7 +5477,7 @@ GameObject:
   - component: {fileID: 1632796177}
   - component: {fileID: 1632796176}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: crushthem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6133,7 +6142,7 @@ GameObject:
   - component: {fileID: 1895391458}
   - component: {fileID: 1895391457}
   m_Layer: 5
-  m_Name: Image
+  m_Name: runthemover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

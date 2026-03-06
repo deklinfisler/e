@@ -1,5 +1,6 @@
 
 
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool movmentenabled;
     public bool walking;
     public bool running;
+    public bool canjump = true;
     void Start()
     {
         movmentenabled = true; 
@@ -24,9 +26,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
+
         if (movmentenabled == true)
-{
+        {
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
 
@@ -52,11 +54,14 @@ public class PlayerMovement : MonoBehaviour
 
             );
             }
-
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-            {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                isGrounded = false;
+            if (canjump == true)
+            { 
+                if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+                {
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    isGrounded = false;
+                    StartCoroutine(canjumpcooldown());
+                }
             }
             if (Input.GetKey(KeyCode.LeftShift) == true)
             {
@@ -102,4 +107,10 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
+    IEnumerator canjumpcooldown()
+    {
+        canjump = false;
+        yield return new WaitForSeconds(4f);
+        canjump = true;
+    }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class hitbox : MonoBehaviour
 {
     public float hitboxs = 5f;
-    public bool Canattack;
+    public bool Canattack= true;
     
 
     void Start()

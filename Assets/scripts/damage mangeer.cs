@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class damagemangeer : MonoBehaviour
@@ -14,6 +15,11 @@ public class damagemangeer : MonoBehaviour
     public bool alive;
     public bool notdowned;
     public bool attacking;
+    public bool afraid;
+    public bool burning;
+    public bool adrenaline;
+    public bool greedy;
+    public bool guilty;
 
     public float damageresistance = 25;
 
@@ -46,6 +52,7 @@ public class damagemangeer : MonoBehaviour
     public int nomercy = 10;
 
     public GameObject hitbox;
+    public GameObject dashhitbox;
 
     public Coroutine hitboxCoroutine;
 
@@ -62,7 +69,8 @@ public class damagemangeer : MonoBehaviour
         if (dead == true)
         {
             GetComponent<PlayerMovement>().topSpeed = 0;
-
+            GetComponent<PlayerMovement>().acceleration = 0;
+            GetComponent<PlayerMovement>().canjump = false;
         }
 
         if (lastlife == true && health == 0)
@@ -74,6 +82,7 @@ public class damagemangeer : MonoBehaviour
         {
             downed = false;
             invulnerable = true;
+            GetComponent<PlayerMovement>().canjump = true;
             StartCoroutine(InvulnerableTimer());
         }
 
@@ -105,6 +114,7 @@ public class damagemangeer : MonoBehaviour
         {
             lastlife = true;
             reviveable = true;
+            GetComponent<PlayerMovement>().canjump = false;
         }
 
 
@@ -115,22 +125,24 @@ public class damagemangeer : MonoBehaviour
 
     }
 
-
+    
     private void spawnhitbox(float scale)
     {
-        Vector3 position = transform.position + Camera.main.transform.forward * 2;
-        position.y = transform.position.y;
+       
+            Vector3 position = transform.position + Camera.main.transform.forward * 2;
+            position.y = transform.position.y;
 
-        Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
-        rotation.x = 0;
-        rotation.z = 0;
+            Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
+            rotation.x = 0;
+            rotation.z = 0;
 
-        GameObject hit = Instantiate(hitbox, position, Quaternion.Euler(rotation));
-        hit.transform.SetParent(transform);
-        hit.transform.localScale = new Vector3(scale, scale, scale);
-        
+            GameObject hit = Instantiate(hitbox, position, Quaternion.Euler(rotation));
+            hit.transform.SetParent(transform);
+            hit.transform.localScale = new Vector3(scale, scale, scale);
 
-        StartCoroutine(pycomaincooldown());
+
+            StartCoroutine(pycomaincooldown());
+       
     }
 
     IEnumerator spawnhitboxes()
@@ -158,9 +170,11 @@ public class damagemangeer : MonoBehaviour
 
     IEnumerator pycomaincooldown()
     {
+       
         attacking = true;
         yield return new WaitForSeconds(pycomaincool);
         attacking = false;
+        
     }
 
 }
