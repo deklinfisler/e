@@ -20,7 +20,7 @@ public class dash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<PlayerMovement>().isGrounded == false)
+        if (GetComponent<PlayerMovement>().isGrounded == false && GetComponent<damagemangeer>().wideopen == false)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
