@@ -10,6 +10,7 @@ public class dash : MonoBehaviour
     public float dashSpeed = 100f;
     public float dashcooldowntime = 18f;
     public float hitwall = 3f;
+    public TMPro.TMP_Text cooldownText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,8 +59,12 @@ public class dash : MonoBehaviour
     {
         candash = false;
 
-        yield return new WaitForSeconds(dashcooldowntime);
-        
+        for(float i = 0f; i < dashcooldowntime; i += Time.deltaTime)
+        {
+            cooldownText.text = (dashcooldowntime - i).ToString("F1");
+            yield return new WaitForEndOfFrame();
+        }
+
         candash = true;
     }
 

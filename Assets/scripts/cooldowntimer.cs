@@ -16,11 +16,11 @@ public class cooldowntimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<dash>().dashing == true && GetComponent<dash>().candash == false)
-        {
+        //if (GetComponent<dash>().dashing == false && GetComponent<dash>().candash == true)
+        //{
             
-            cooldownText.text = GetComponent<dash>().dashcooldowntime.ToString();
-        }
+        //    cooldownText.text += GetComponent<dash>().dashcooldowntime.ToString();
+        //}
        
     }
 }
