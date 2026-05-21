@@ -5756,6 +5756,7 @@ MonoBehaviour:
   dashSpeed: 93
   dashcooldowntime: 18
   hitwall: 5
+  cooldownText: {fileID: 2140445664}
 --- !u!114 &1625610927
 MonoBehaviour:
   m_ObjectHideFlags: 0
