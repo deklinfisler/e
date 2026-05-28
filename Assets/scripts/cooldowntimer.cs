@@ -24,10 +24,10 @@ public class cooldowntimer : MonoBehaviour
                 GetComponent<dash>().candash = true;
                 cooldownTime = 5f; // Reset the cooldown time for the next dash
                 cooldownText.text = ""; // Clear the cooldown text
-                if (GameObject.Find("runThemDown").GetComponent<TMPro.TMP_Text>().text == "0.0")
-                { 
-                GetComponent<Canvas>().enabled = false; // Hide the cooldown text
-                }
+                //if (GameObject.Find("runThemDown").GetComponent<TMPro.TMP_Text>().text == "0")
+                //{ 
+                //GetComponent<Canvas>().enabled = false; // Hide the cooldown text
+                //}
             }
             
         }

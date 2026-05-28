@@ -44,7 +44,7 @@ public class damagemangeer : MonoBehaviour
 
 
     public int pycomain = 20;
-    public int pycomainwindup = 1;
+    public int pycomainwindup = 2;
     public int pycomaincool = 3;
     public int pycodash = 10;
     public int pycocrush = 40;
@@ -53,7 +53,7 @@ public class damagemangeer : MonoBehaviour
     public bool wideopen;
     public GameObject hitbox;
     public GameObject dashhitbox;
-
+    public bool winduppyco;
     public Coroutine hitboxCoroutine;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -128,7 +128,7 @@ public class damagemangeer : MonoBehaviour
     
     private void spawnhitbox(float scale)
     {
-       
+        //StartCoroutine(windup());
             Vector3 position = transform.position + Camera.main.transform.forward * 2;
             position.y = transform.position.y;
 
@@ -140,9 +140,11 @@ public class damagemangeer : MonoBehaviour
             hit.transform.SetParent(transform);
             hit.transform.localScale = new Vector3(scale, scale, scale);
 
-
-            StartCoroutine(pycomaincooldown());
        
+        //if (winduppyco == true)
+        //{ 
+            StartCoroutine(pycomaincooldown());
+        //}
     }
 
     IEnumerator spawnhitboxes()
@@ -167,14 +169,19 @@ public class damagemangeer : MonoBehaviour
         invulnerable = false;
 
     }
+    IEnumerator windup()
+    {
 
+        yield return new WaitForSeconds(2.5f);
+        winduppyco = true;
+    }
     IEnumerator pycomaincooldown()
     {
        
         attacking = true;
         yield return new WaitForSeconds(pycomaincool);
         attacking = false;
-        
+        winduppyco = false;
     }
 
 }
