@@ -76,7 +76,6 @@ public class dash : MonoBehaviour
     }
     IEnumerator dashhitboxs()
     {
-        
         Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
         rotation.x = 0;
         rotation.z = 0; 
@@ -84,6 +83,6 @@ public class dash : MonoBehaviour
         GameObject dashhitbox = Instantiate(GetComponent<damagemangeer>().hitbox, transform.position, Quaternion.identity);
         dashhitbox.transform.SetParent(transform);
 
-        yield return new WaitUntil(() => dashing = false);
+        yield return new WaitUntil(() => dashing == false);
     }
 }
