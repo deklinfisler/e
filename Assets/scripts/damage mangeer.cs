@@ -42,7 +42,7 @@ public class damagemangeer : MonoBehaviour
     public int recueduration = 7;
     public int recuewindup = 6;
 
-
+    public bool pycohitbox;
     public int pycomain = 20;
     public int pycomainwindup = 2;
     public int pycomaincool = 3;
@@ -126,7 +126,7 @@ public class damagemangeer : MonoBehaviour
     }
 
     
-    private void spawnhitbox(float scale)
+    public void spawnhitbox(float scale)
     {
         //StartCoroutine(windup());
             Vector3 position = transform.position + Camera.main.transform.forward * 2;
@@ -141,10 +141,10 @@ public class damagemangeer : MonoBehaviour
             hit.transform.localScale = new Vector3(scale, scale, scale);
 
        
-        //if (winduppyco == true)
-        //{ 
-            StartCoroutine(pycomaincooldown());
-        //}
+        
+        
+        StartCoroutine(pycomaincooldown());
+        
     }
 
     IEnumerator spawnhitboxes()

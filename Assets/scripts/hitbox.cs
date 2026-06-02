@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class hitbox : MonoBehaviour
@@ -18,7 +20,16 @@ public class hitbox : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (FindFirstObjectByType<dash>().dashing == true && FindFirstObjectByType<PlayerMovement>().isGrounded == false)
+        { 
+          StartCoroutine(DashingHitBoxs());
+
+
+        }
+        else if (FindFirstObjectByType<dash>().dashing == true && FindFirstObjectByType<PlayerMovement>().isGrounded == false)
+        {
+          StopCoroutine(DashingHitBoxs());
+        }
 
         if (other.TryGetComponent(out testdumby health))
         {
@@ -34,6 +45,13 @@ public class hitbox : MonoBehaviour
         {
             Canattack = false;
         }
+       
+    } 
+    IEnumerator DashingHitBoxs()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GetComponentInParent<damagemangeer>().spawnhitbox(2.5f);
+
 
     }
 }

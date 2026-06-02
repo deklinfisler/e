@@ -75,7 +75,8 @@ public class dash : MonoBehaviour
         GetComponent<PlayerMovement>().movmentenabled = true;
     }
     IEnumerator dashhitboxs()
-    { 
+    {
+        
         Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
         rotation.x = 0;
         rotation.z = 0; 
