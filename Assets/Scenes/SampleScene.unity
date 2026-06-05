@@ -3123,7 +3123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce04518c70a281439746432f89d4e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test_dumby: 100
+  minHealth: {r: 0.3584906, g: 0.333998, b: 0.14035244, a: 1}
+  maxHealth: {r: 1, g: 0, b: 0, a: 1}
+  maxhealth: 100
+  currentHealth: 0
   damagetext: {fileID: 1921681049}
 --- !u!54 &822216192
 Rigidbody:

@@ -24,7 +24,7 @@ public class hitbox : MonoBehaviour
 
         if (other.TryGetComponent(out testdumby health))
         {
-            health.test_dumby -= GetComponentInParent<damagemangeer>().pycomain;
+            health.currentHealth -= GetComponentInParent<damagemangeer>().pycomain;
             GetComponentInParent<damagemangeer>().StopCoroutine(GetComponentInParent<damagemangeer>().hitboxCoroutine);
         }
         
