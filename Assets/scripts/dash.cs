@@ -80,7 +80,7 @@ public class dash : MonoBehaviour
         rotation.x = 0;
         rotation.z = 0; 
 
-        GameObject dashhitbox = Instantiate(GetComponent<damagemangeer>().hitbox, transform.position, Quaternion.identity);
+        GameObject dashhitbox = Instantiate(GetComponent<damagemangeer>().hitbox, transform.position + Camera.main.transform.forward * 2, Quaternion.identity);
         dashhitbox.transform.SetParent(transform);
 
         yield return new WaitUntil(() => dashing == false);
