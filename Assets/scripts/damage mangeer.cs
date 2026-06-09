@@ -125,25 +125,27 @@ public class damagemangeer : MonoBehaviour
 
     }
 
-    
+
     public void spawnhitbox(float scale)
     {
-        //StartCoroutine(windup());
+        
+             //StartCoroutine(windup());
             Vector3 position = transform.position + Camera.main.transform.forward * 2;
-            position.y = transform.position.y;
+        position.y = transform.position.y;
 
-            Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
-            rotation.x = 0;
-            rotation.z = 0;
+        Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
+        rotation.x = 0;
+        rotation.z = 0;
 
-            GameObject hit = Instantiate(hitbox, position, Quaternion.Euler(rotation));
-            hit.transform.SetParent(transform);
-            hit.transform.localScale = new Vector3(scale, scale, scale);
-
+        GameObject hit = Instantiate(hitbox, position, Quaternion.Euler(rotation));
+        hit.transform.SetParent(transform);
+        hit.transform.localScale = new Vector3(scale, scale, scale);
+        StartCoroutine(pycomaincooldown());
+        
        
         
         
-        StartCoroutine(pycomaincooldown());
+        
         
     }
 
@@ -169,15 +171,10 @@ public class damagemangeer : MonoBehaviour
         invulnerable = false;
 
     }
-    IEnumerator windup()
-    {
-
-        yield return new WaitForSeconds(2.5f);
-        winduppyco = true;
-    }
+   
     IEnumerator pycomaincooldown()
     {
-       
+        
         attacking = true;
         yield return new WaitForSeconds(pycomaincool);
         attacking = false;

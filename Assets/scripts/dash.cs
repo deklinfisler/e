@@ -71,14 +71,17 @@ public class dash : MonoBehaviour
     IEnumerator movementWallCooldown()
     {
         GetComponent<PlayerMovement>().movmentenabled = false;
+        
         yield return new WaitForSeconds(hitwall);
+        
         GetComponent<PlayerMovement>().movmentenabled = true;
+        
     }
     IEnumerator dashhitboxs()
     {
         Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
         rotation.x = 0;
-        rotation.z = 0; 
+        rotation.z = 0;
 
         GameObject dashhitbox = Instantiate(GetComponent<damagemangeer>().hitbox, transform.position + Camera.main.transform.forward * 2, Quaternion.identity);
         dashhitbox.transform.SetParent(transform);
