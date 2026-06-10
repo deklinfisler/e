@@ -95,7 +95,7 @@ public class damagemangeer : MonoBehaviour
         if (reviveable == true && Input.GetKeyDown(KeyCode.E))
         {
             downed = true;
-            health = 55;
+            health = (int)(health * 0.55f);
         }
 
         if (downed == true)
@@ -129,7 +129,7 @@ public class damagemangeer : MonoBehaviour
     public void spawnhitbox(float scale)
     {
         
-             //StartCoroutine(windup());
+             
             Vector3 position = transform.position + Camera.main.transform.forward * 2;
         position.y = transform.position.y;
 
@@ -151,10 +151,11 @@ public class damagemangeer : MonoBehaviour
 
     IEnumerator spawnhitboxes()
     {
-        
-        
-            spawnhitbox(1);
-            yield return new WaitForSeconds(0.06f);
+       attacking = true;
+        if (GetComponent<dash>().dashing == false)
+        {
+
+            yield return new WaitForSeconds(pycomainwindup);
             spawnhitbox(1.1f);
             yield return new WaitForSeconds(0.06f);
             spawnhitbox(1.1f);
@@ -162,7 +163,10 @@ public class damagemangeer : MonoBehaviour
             spawnhitbox(1.1f);
             yield return new WaitForSeconds(0.06f);
             spawnhitbox(1.1f);
-        
+            yield return new WaitForSeconds(0.06f);
+            spawnhitbox(1.1f);
+        }
+        attacking = false;
     }
 
     IEnumerator InvulnerableTimer()
@@ -178,7 +182,7 @@ public class damagemangeer : MonoBehaviour
         attacking = true;
         yield return new WaitForSeconds(pycomaincool);
         attacking = false;
-        winduppyco = false;
+        
     }
 
 }
