@@ -165,6 +165,7 @@ public class damagemangeer : MonoBehaviour
             spawnhitbox(1.1f);
             yield return new WaitForSeconds(0.06f);
             spawnhitbox(1.1f);
+            GetComponent<AudioSource>().Play();
         }
         attacking = false;
     }
