@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class crushthem : MonoBehaviour
@@ -13,10 +15,22 @@ public class crushthem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = transform.position.x;
-        float y = Mathf.Sin (Time.time * crushfrequency) * crushstrength + originalY;
-        float z = transform.position.z;
+        if (Input.GetKeyDown(KeyCode.Mouse2) && GetComponent<PlayerMovement>().isGrounded == true)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            StartCoroutine(crush());
 
-        transform.position = new Vector3(x, y, z);
+        }
+    }
+    IEnumerator crush()
+    {
+        yield return new WaitForSeconds(3);
+        GetComponent<damagemangeer>().spawnhitbox(1.1f);
+        float x = transform.position.x;
+            float y = Mathf.Sin(Time.time * crushfrequency) * crushstrength + originalY;
+            float z = transform.position.z;
+
+            transform.position = new Vector3(x, y, z);
+
     }
 }
