@@ -18,6 +18,7 @@ public class crushthem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse2) && GetComponent<PlayerMovement>().isGrounded == true)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            GetComponent<damagemangeer>().spawnhitbox(1.1f);
             StartCoroutine(crush());
 
         }
@@ -31,6 +32,6 @@ public class crushthem : MonoBehaviour
             float z = transform.position.z;
 
             transform.position = new Vector3(x, y, z);
-
+        Destroy(gameObject, 2f);
     }
 }
