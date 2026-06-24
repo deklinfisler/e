@@ -27,7 +27,7 @@ public class hitbox : MonoBehaviour
             health.currentHealth -= GetComponentInParent<damagemangeer>().pycomain;
             GetComponentInParent<damagemangeer>().StopCoroutine(GetComponentInParent<damagemangeer>().hitboxCoroutine);
         }
-        GetComponent<AudioSource>().Play(); 
+        FindFirstObjectByType<hitSound>().Play(); 
     }
    void Update ()
     {
