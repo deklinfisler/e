@@ -5978,6 +5978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e5cbcdf9106c04e88273609c7fc6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::crushthem
+  crushing: 1
   crushfrequency: 10
   crushstrength: 10
 --- !u!82 &1625610930
