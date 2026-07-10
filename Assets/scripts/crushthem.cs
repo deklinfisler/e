@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,8 +19,14 @@ public class crushthem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse2) && GetComponent<PlayerMovement>().isGrounded == true)
         {
-             StartCoroutine(crushhitbox());
-             
+            crushing= true;
+
+            if (crushing == true)
+            {
+                StartCoroutine(thecrushing());
+
+                StartCoroutine(crushhitbox());
+            }
 
              //transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
              //float x = transform.position.x;
@@ -32,22 +39,35 @@ public class crushthem : MonoBehaviour
         
         }
     }
- //spawn crush hitbox and all othe atributes of the crush ability, such as movement disable and jump disable
-    IEnumerator crushhitbox()
-    {    
+    IEnumerator thecrushing()
+    {
+    
         GetComponent<PlayerMovement>().movmentenabled = false;
         GetComponent<PlayerMovement>().canjump = false;
         yield return new WaitForSeconds(3);
+        
+      
+
+
+    }
+
+  
+
+    //spawn crush hitbox and all othe atributes of the crush ability, such as movement disable and jump disable
+    IEnumerator crushhitbox()
+    {    
+        
         Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
         rotation.x = 0;
         rotation.z = 0;
 
         GameObject crushhitbox = Instantiate(GetComponent<damagemangeer>().crushhitbox, transform.position + Camera.main.transform.forward * 2, Quaternion.identity);
         crushhitbox.transform.SetParent(transform);
-        yield return new WaitForSeconds(1.5f);
+        crushing = false;
+        yield return new WaitUntil(() => crushing == false);
+          yield return new WaitForSeconds(1.5f);
         GetComponent<PlayerMovement>().movmentenabled = true;
         GetComponent<PlayerMovement>().canjump = true;
-        yield return new WaitUntil(() => crushing == false);
-        
+       
     }
 }
