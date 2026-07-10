@@ -37,7 +37,7 @@ public class crushthem : MonoBehaviour
         
         }
     }
- 
+ //spawn crush hitbox and all othe atributes of the crush ability, such as movement disable and jump disable
     IEnumerator crushhitbox()
     {    
         GetComponent<PlayerMovement>().movmentenabled = false;
