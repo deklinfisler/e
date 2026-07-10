@@ -18,11 +18,6 @@ public class crushthem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse2) && GetComponent<PlayerMovement>().isGrounded == true)
         {
-             crushing = true;
-
-             if(crushing == true)
-            {
-
              StartCoroutine(crushhitbox());
              
 
@@ -33,7 +28,7 @@ public class crushthem : MonoBehaviour
             //transform.position = new Vector3(x, y, z);
              //Destroy(gameObject, 2f);  
              //crushing = false;
-            }
+            
         
         }
     }
