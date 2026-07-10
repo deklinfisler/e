@@ -53,6 +53,7 @@ public class damagemangeer : MonoBehaviour
     public bool wideopen;
     public GameObject hitbox;
     public GameObject dashhitbox;
+    public GameObject crushhitbox;
     public bool winduppyco;
     public Coroutine hitboxCoroutine;
 

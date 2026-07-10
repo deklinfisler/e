@@ -5951,6 +5951,7 @@ MonoBehaviour:
   wideopen: 0
   hitbox: {fileID: 5578663931277354018, guid: c884c59e3931b8241a9eb1d976c6c222, type: 3}
   dashhitbox: {fileID: 5578663931277354018, guid: 5581a5828ab9cdc4781655d24e585eb2, type: 3}
+  crushhitbox: {fileID: 5578663931277354018, guid: 24dddb6bf42abf64599d581f38f3e8a0, type: 3}
   winduppyco: 0
 --- !u!114 &1625610928
 MonoBehaviour:
