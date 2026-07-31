@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float acceleration = 17f;
-    public float topSpeed = 17f;
+    public float acceleration = 50f;
+    public float topSpeed = 10f;
     public bool clamping;
     public float jumpForce = 10f;
     private Rigidbody rb;
@@ -74,26 +74,29 @@ public class PlayerMovement : MonoBehaviour
                 walking = true;
             }
             if (running == true)
-            {
+            {  
+                
+                
+                topSpeed = 17f;
+            
+
                 if (isGrounded == false)
                 {
                     topSpeed = 15f;
                 }
-                if (isGrounded == true)
-                {
-                    topSpeed = 17f;
-                }
+             
             }
             if (walking == true)
             {
+            
+                topSpeed = 10f;
+                
+
                 if (isGrounded == false)
                 {
                     topSpeed = 8f;
                 }
-                if (isGrounded == true)
-                {
-                    topSpeed = 10f;
-                }
+              
             }
         }
     }

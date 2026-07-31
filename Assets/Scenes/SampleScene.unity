@@ -5844,12 +5844,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 50
-  topSpeed: 17
+  topSpeed: 10
   clamping: 1
   jumpForce: 10
   isGrounded: 0
   movmentenabled: 0
-  walking: 0
+  walking: 1
   running: 0
   canjump: 1
 --- !u!54 &1625610925
