@@ -63,8 +63,9 @@ public class crushthem : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
-        rotation.x = 0;
-        rotation.z = 0;
+        rotation.x = transform.position.x;
+        rotation.y = Mathf.Sin(Time.time * crushfrequency) * crushstrength + originalY;
+        rotation.z = transform.position.z;
 
         GameObject crushhitbox = Instantiate(GetComponent<damagemangeer>().crushhitbox, transform.position + Camera.main.transform.forward * 2, Quaternion.identity);
         crushhitbox.transform.SetParent(transform);
