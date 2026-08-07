@@ -28,7 +28,7 @@ public class crushthem : MonoBehaviour
                 
             
 
-             //transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            
              //float x = transform.position.x;
              //float y = Mathf.Sin(Time.time * crushfrequency) * crushstrength + originalY;
              //float z = transform.position.z;
@@ -61,7 +61,7 @@ public class crushthem : MonoBehaviour
          GetComponent<PlayerMovement>().movmentenabled = false;
         GetComponent<PlayerMovement>().canjump = false;
         yield return new WaitForSeconds(3);
-
+        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
         Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
         rotation.x = transform.position.x;
         rotation.y = Mathf.Sin(Time.time * crushfrequency) * crushstrength + originalY;
