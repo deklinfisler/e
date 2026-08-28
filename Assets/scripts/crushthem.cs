@@ -18,11 +18,8 @@ public class crushthem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          if (other.TryGetComponent(out testdumby health))
-        {
-            health.currentHealth -= GetComponentInParent<damagemangeer>().pycocrush;
-            GetComponentInParent<damagemangeer>().StopCoroutine(GetComponentInParent<damagemangeer>().hitboxCoroutine);
-        }
+          
+        
         if (Input.GetMouseButtonDown(1) && playerMovement.isGrounded == true)
         {
             StartCoroutine(crushhitbox());
@@ -63,11 +60,11 @@ public class crushthem : MonoBehaviour
     IEnumerator crushhitbox()
     {    
         crushing = true;
-        GetComponent<damagemangeer>().attacking = false;
+        //GetComponent<damagemangeer>().attacking = false;
          GetComponent<PlayerMovement>().movmentenabled = false;
         GetComponent<PlayerMovement>().canjump = false;
         yield return new WaitForSeconds(3);
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
         rotation.x = transform.position.x;
         rotation.y = Mathf.Sin(Time.time * crushfrequency) * crushstrength + originalY;
@@ -81,6 +78,6 @@ public class crushthem : MonoBehaviour
           yield return new WaitForSeconds(1.5f);
         GetComponent<PlayerMovement>().movmentenabled = true;
         GetComponent<PlayerMovement>().canjump = true;
-       GetComponent<damagemangeer>().attacking = true;
+       //GetComponent<damagemangeer>().attacking = true;
     }
 }

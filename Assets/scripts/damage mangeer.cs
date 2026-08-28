@@ -182,7 +182,9 @@ public class damagemangeer : MonoBehaviour
     {
         
         attacking = true;
+        //GetComponent<hitbox>().Canattack = true;
         yield return new WaitForSeconds(pycomaincool);
+        //GetComponent<hitbox>().Canattack = false;
         attacking = false;
         
     }

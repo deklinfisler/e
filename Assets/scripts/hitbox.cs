@@ -29,6 +29,19 @@ public class hitbox : MonoBehaviour
         }
         //FindFirstObjectByType<AudioSource>().Play(); 
     }
+    //private void OnTriggerEnter(Collider other)
+    //{
+       
+
+    //    if (other.TryGetComponent(out testdumby health))
+    //    {
+    //        health.currentHealth -= GetComponentInParent<damagemangeer>().pycocrush;
+    //        GetComponentInParent<damagemangeer>().StopCoroutine(GetComponentInParent<crushthem>().crushhitbox());
+    //    }
+    //    FindFirstObjectByType<AudioSource>().Play(); 
+    //}
+
+
    void Update ()
     {
         if (FindFirstObjectByType<dash>().dashing == true && FindFirstObjectByType<PlayerMovement>().isGrounded == false)
