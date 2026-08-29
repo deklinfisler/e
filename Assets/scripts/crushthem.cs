@@ -12,6 +12,7 @@ public class crushthem : MonoBehaviour
     public float crushfrequency = 10f;
     public float crushstrength = 10f;
     public PlayerMovement playerMovement;
+    public TMPro.TMP_Text crushcooldownText;
     private float originalY;
      void Awake()
     {
@@ -76,7 +77,7 @@ public class crushthem : MonoBehaviour
     //spawn crush hitbox and all othe atributes of the crush ability, such as movement disable and jump disable
     IEnumerator crushhitbox()
     {    
-        if (cancrush == true &&crushactive == true)
+        if (cancrush == true )
         {
         crushing = true;
         //GetComponent<damagemangeer>().attacking = false;
@@ -100,8 +101,17 @@ public class crushthem : MonoBehaviour
        //GetComponent<damagemangeer>().attacking = true;
        }
        crushactive = false;
+       StartCoroutine(crushtext());
         StartCoroutine(crushcooldown());
 
+    }
+    IEnumerator crushtext()
+    {
+        for(float i = 0f; i < GetComponent<damagemangeer>().crushcooldown; i += Time.deltaTime)
+        {
+            crushcooldownText.text = (GetComponent<damagemangeer>().crushcooldown - i).ToString("F1");
+            yield return new WaitForEndOfFrame();
+        }
     }
     IEnumerator crushcooldown()
     {

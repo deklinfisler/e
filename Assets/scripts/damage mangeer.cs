@@ -18,7 +18,6 @@ public class damagemangeer : MonoBehaviour
     public bool afraid;
     public bool burning;
     public bool adrenaline;
-    public bool greedy;
     public bool guilty;
 
     public float damageresistance = 25;
