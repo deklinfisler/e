@@ -49,6 +49,7 @@ public class damagemangeer : MonoBehaviour
     public int pycodash = 10;
     public int pycocrush = 40;
     public int crushwindup = 4;
+    public int crushcooldown = 20;
     public int nomercy = 10;
     public bool wideopen;
     public GameObject hitbox;

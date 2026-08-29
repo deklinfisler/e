@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class crushthem : MonoBehaviour
 {
+    public bool cancrush = true;
+    public bool crushcheck = false;
+    public bool crushactive = false;
     public bool crushing;
     public float crushfrequency = 10f;
     public float crushstrength = 10f;
@@ -18,10 +21,23 @@ public class crushthem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          
-        
+        if (crushcheck == true && Input.GetMouseButtonDown(1)== true)
+        {
+            Debug.Log("crush ability on cooldown");
+
+        }
+
+        if (GetComponent<PlayerMovement>().isGrounded == true)
+        {
+            cancrush = true;
+        }
+      
+
+        if (cancrush == true)
+        {
         if (Input.GetMouseButtonDown(1) && playerMovement.isGrounded == true)
         {
+            crushactive = true;
             StartCoroutine(crushhitbox());
             Debug.Log("crush ability activated");
             
@@ -41,6 +57,7 @@ public class crushthem : MonoBehaviour
             
         
         }
+        }
     }
     //IEnumerator thecrushing()
     //{
@@ -59,6 +76,8 @@ public class crushthem : MonoBehaviour
     //spawn crush hitbox and all othe atributes of the crush ability, such as movement disable and jump disable
     IEnumerator crushhitbox()
     {    
+        if (cancrush == true &&crushactive == true)
+        {
         crushing = true;
         //GetComponent<damagemangeer>().attacking = false;
          GetComponent<PlayerMovement>().movmentenabled = false;
@@ -79,5 +98,17 @@ public class crushthem : MonoBehaviour
         GetComponent<PlayerMovement>().movmentenabled = true;
         GetComponent<PlayerMovement>().canjump = true;
        //GetComponent<damagemangeer>().attacking = true;
+       }
+       crushactive = false;
+        StartCoroutine(crushcooldown());
+
+    }
+    IEnumerator crushcooldown()
+    {
+        crushcheck = true;
+        cancrush = false;
+        yield return new WaitForSeconds(GetComponent<damagemangeer>().crushcooldown);
+        cancrush = true;
+        crushcheck = false;
     }
 }
