@@ -43,7 +43,7 @@ public class crushthem : MonoBehaviour
             Debug.Log("crush ability activated");
             
             
-                //StartCoroutine(thecrushing());
+             //StartCoroutine(thecrushing());
 
                 
             
@@ -52,7 +52,7 @@ public class crushthem : MonoBehaviour
              //float x = transform.position.x;
              //float y = Mathf.Sin(Time.time * crushfrequency) * crushstrength + originalY;
              //float z = transform.position.z;
-            //transform.position = new Vector3(x, y, z);
+             //transform.position = new Vector3(x, y, z);
              //Destroy(gameObject, 2f);  
              //crushing = false;
             
@@ -79,30 +79,30 @@ public class crushthem : MonoBehaviour
     {    
         if (cancrush == true )
         {
-        crushing = true;
-        //GetComponent<damagemangeer>().attacking = false;
-         GetComponent<PlayerMovement>().movmentenabled = false;
-        GetComponent<PlayerMovement>().canjump = false;
-        yield return new WaitForSeconds(3);
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
-        rotation.x = transform.position.x;
-        rotation.y = Mathf.Sin(Time.time * crushfrequency) * crushstrength + originalY;
-        rotation.z = transform.position.z;
+          crushing = true;
+          //GetComponent<damagemangeer>().attacking = false;
+          GetComponent<PlayerMovement>().movmentenabled = false;
+          GetComponent<PlayerMovement>().canjump = false;
+          yield return new WaitForSeconds(3);
+          transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+          Vector3 rotation = Camera.main.transform.rotation.eulerAngles;
+          rotation.x = transform.position.x;
+          rotation.y = Mathf.Sin(Time.time * crushfrequency) * crushstrength + originalY;
+          rotation.z = transform.position.z;
            
-        GameObject crushhitbox = Instantiate(GetComponent<damagemangeer>().crushhitbox, transform.position + Camera.main.transform.forward * 2, Quaternion.identity);
-        crushhitbox.transform.SetParent(transform);
+          GameObject crushhitbox = Instantiate(GetComponent<damagemangeer>().crushhitbox, transform.position + Camera.main.transform.forward * 2, Quaternion.identity);
+          crushhitbox.transform.SetParent(transform);
          
-        crushing = false;
-        yield return new WaitUntil(() => crushing == false);
+          crushing = false;
+          yield return new WaitUntil(() => crushing == false);
           yield return new WaitForSeconds(1.5f);
-        GetComponent<PlayerMovement>().movmentenabled = true;
-        GetComponent<PlayerMovement>().canjump = true;
-       //GetComponent<damagemangeer>().attacking = true;
+          GetComponent<PlayerMovement>().movmentenabled = true;
+          GetComponent<PlayerMovement>().canjump = true;
+          //GetComponent<damagemangeer>().attacking = true;
        }
-       crushactive = false;
-       StartCoroutine(crushtext());
-        StartCoroutine(crushcooldown());
+         crushactive = false;
+         StartCoroutine(crushtext());
+         StartCoroutine(crushcooldown());
 
     }
     IEnumerator crushtext()
